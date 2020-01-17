@@ -17,7 +17,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@Builder // ez arra van igazából, hogy egy sorban fel tudjunk építeni egy objektumot ebből az osztályból.
 @Table(name = "_users")
 public class User implements UserDetails {
 
@@ -38,7 +38,8 @@ public class User implements UserDetails {
     // @TODO implement share
 
     @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
+    public Collection<? extends GrantedAuthority> getAuthorities() { // minden collections interface-t megvalósító objektum
+        // ami olyan objektumokat tárol, amelyek megvalósítják a GrantedAuthority interface-t.
         return List.of(new SimpleGrantedAuthority(this.role.name()));
     }
 
